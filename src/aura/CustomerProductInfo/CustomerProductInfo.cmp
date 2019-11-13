@@ -1,0 +1,14 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" controller="CustomProductInfo_AuraController">
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="isDataPresent" type="Boolean"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <lightning:card title="Product Costs" iconName="custom:custom40">
+        <aura:if isTrue="{!v.isDataPresent}">
+		    <lightning:datatable keyField="Cost_Type__c" data="{!v.data}" columns="{!v.columns}" hideCheckboxColumn="true"/>
+            <aura:set attribute="else">
+                No product info found.
+            </aura:set>
+        </aura:if>
+    </lightning:card>
+</aura:component>
